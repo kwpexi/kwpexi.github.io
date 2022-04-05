@@ -3,14 +3,14 @@ layout: page
 title: About
 permalink: /about/
 ---
-Hello I am Puppycat, PhD. I am a Python master.
+Anthropology and cognitive science student at UCLA. 
 
 ## More information
 
-My favorite food is spinach. I like to SCREAM when I don't get my way but that's okay because I'm cute.
+I sound like a motivational life coach sometimes, and that's okay. 
 
-![](/images/puppycat.jpg){:height="300px"}
+![](/images/sinister.jpg){:height="300px"}
 
-### Contact me
+### Please hesitate to contact me
 
 [puppycat@puppycat.org](mailto:puppycat@puppycat.org)
