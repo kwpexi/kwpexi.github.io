@@ -27,7 +27,6 @@ python
 Before we do move on, let's shorten the species names to make things a little neater:
 
 ```
-#shorten species name for style purposes
 penguins["Species"] = penguins["Species"].str.split().str.get(0)
 ```
 Now, a given penguin's species will be known by either Adelie, Gentoo or Chinstrap.
@@ -38,24 +37,22 @@ Let's zoom in on two variables: the culmen length and the flipper length of any 
 We can start by importing the necessary modules.
 
 ```
+python
 from matplotlib import pyplot as plt
 import seaborn as sns
 ```
 
-We first create a plot using `plt.subplots()` before using `sns.scatterplot()` to plot our scatterplot.
+We first create a plot using `plt.subplots()` before using `sns.scatterplot()` to plot our scatterplot. We then use `.set()` to create a title for our visualization.
 
 ```
-#create plot using matplotlib
 fig, ax = plt.subplots(figsize=(6,5))
 
-#use seaborn to create scatterplot of flipper length against culmen length
 viz = sns.scatterplot(x="Culmen Length (mm)", 
                       y="Flipper Length (mm)",
                       hue="Species",
                       palette="magma",
                       data=penguins)
 
-#create title for scatterplot
 viz.set(title = "Flipper length against culmen length by species")
 ```
 ![Flipper-culmen.png](/images/Flipper-culmen.png)
