@@ -162,6 +162,8 @@ penguins.head()
 </table>
 </div>
 
+The dataframe displays important information about any given penguin from the Palmer Penguins dataset such as culmen length and species. 
+
 ## Data preprocessing
 
 Before we do move on, let's shorten the species names to make things a little neater:
@@ -198,7 +200,7 @@ viz.set(title = "Flipper length against culmen length by species")
 
 Congratulations! Now we've made a scatterplot demonstrating flipper length in relation to the culmen length of each penguin.
 
-Based on what we've generated, we can see that flipper length appears to be positively correlated with culmen length. Based on the legend, the data points also appear to be generally grouped into the three penguin species. This could mean that either culmen length or flipper length as a variable could be useful in predicting the species of any given penguin.  
+Based on what we've generated, we can see that flipper length appears to be positively correlated with culmen length. The data points also appear to be separated into three distinct groups based on species, which could mean that these variables may be helpful in predicting the species of any given penguin in the dataset.  
 
 
 
