@@ -169,6 +169,8 @@ The dataframe displays important information about any given penguin from the Pa
 Before we do move on, let's shorten the species names to make things a little neater:
 
 ```python
+# str.split() converts species name into a string and splits it by whitespace
+# str.get(0) gets the first element from the list produced by str.split()  
 penguins["Species"] = penguins["Species"].str.split().str.get(0)
 ```
 Now, a given penguin's species will be known by either Adelie, Gentoo or Chinstrap.
@@ -186,14 +188,19 @@ import seaborn as sns
 We first create a plot using `plt.subplots()` before using `sns.scatterplot()` to plot our scatterplot. We then use `.set()` to create a title for our visualization.
 
 ```python
+# create a plot using the subplots method from pyplot 
 fig, ax = plt.subplots(figsize=(6,5))
 
+# use the scatterplot method in seaborn to create a scatterplot
+# x-variable is culmen length
+# y-variable is flipper length
 viz = sns.scatterplot(x="Culmen Length (mm)", 
                       y="Flipper Length (mm)",
                       hue="Species",
                       palette="magma",
                       data=penguins)
 
+# create a title for our visualization using the set method in seaborn
 viz.set(title = "Flipper length against culmen length by species")
 ```
 ![Flipper-culmen.png](/images/Flipper-culmen.png)
