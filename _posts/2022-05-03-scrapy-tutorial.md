@@ -38,7 +38,9 @@ We start by creating a file inside the spiders directory called imdb_spider.py a
 ```python
 import scrapy
 ```
-We want to create three distinct parsing methods. The first enables us to get to the Cast & Crew page from the movie's IMDB page:
+To scrape a website, we need to write a spider that will crawl a site and extract the data. Spiders are classes that you will have to define to make the initial request to the site, follow links in the pages and parse the downloaded page content to extract data.
+
+In our case, we are interested in scraping data from an actor's page based on their involvement in a specific movie. We first need to define methods that will enable us to follow links from the initial movie's IMDB page to get to the Cast & Crew page:
 
 ```python
  def parse(self,response):
@@ -56,7 +58,9 @@ We want to create three distinct parsing methods. The first enables us to get to
         # calls second method: parse_full_credits
         yield scrapy.Request(full_credit_url,callback=self.parse_full_credits)
 ```
-To parse through the Cast & Credits page, we will make use of our second method:
+
+You will notice that we have called a second function, parse_full_credits in the callback method of our scrapy.Request. It will help us follow the links on the Cast & Crew page to get to an individual actor's page. Let's define it:
+
 ```python
 def parse_full_credits(self,response):
         """
@@ -77,7 +81,11 @@ def parse_full_credits(self,response):
             # call parse_actor_page method
             yield scrapy.Request(actor_url,callback=self.parse_actor_page)
 ```
-To parse through each actor's page, we will then make use of our third method:
+
+Again, you will notice that a third function parse_actor_page is being called in the callback method of our scrapy.Request. Now that we have figured out how to follow links to navigate from the movie page to the actor page, this will help us extract the data that we want from an actor's page. In this case, we are interested in every movie or show that an actor has been involved in. 
+
+In the method below, we will use CSS selectors to help us extract the actor's name, and the name of the movie or show they were involved in. 
+
 ```python
 def parse_actor_page(self,response):
         """
@@ -95,10 +103,15 @@ def parse_actor_page(self,response):
             movie_or_TV_name = row.css("b a::text").get()
             yield{"actor" : actor_name, "movie_or_TV_name" : movie_or_TV_name}
 ```
-Your three parse methods should be combined under one class in your imdb_spider.py file as shown below:
+
+Now that you've written all three of your parse methods, you need to combine them under one spider class in your imdb_spider.py file. This will enable the methods to be used by the spider to crawl and extract data from the IMDB website.
+
 ```python
 class ImdbSpider(scrapy.Spider):
+  # spider classes need to subclass scrapy.Spider
+
     name = 'imdb_spider'
+    # identifies the Spider
     
     # starts at movie url
     start_urls = ['https://www.imdb.com/title/tt1856101/']
