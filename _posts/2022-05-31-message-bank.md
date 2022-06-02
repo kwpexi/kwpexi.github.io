@@ -87,6 +87,7 @@ def submit():
 
 ```python
 # submit.html template
+{% raw %}
 {% extends 'base.html' %}
 
 {% block header %}
@@ -109,6 +110,7 @@ def submit():
     <h1>Thank you for your message deposit.</h1>
 {% endif %}
 {% endblock %}
+{% endraw %}
 ```
 ## 3. Viewing random submissions
 
@@ -141,6 +143,7 @@ We will then write a new template called `view.html` to display the messages ext
 
 ```python
 # view.html
+{% raw %}
 {% extends 'base.html' %}
 
 {% block header %}
@@ -156,6 +159,7 @@ Here are some messages that were previously deposited.
 {% endfor %}
     
 {% endblock %}
+{% endraw %}
 ```
 Finally, we will write a function to render the `view.html` template.
 ```python
